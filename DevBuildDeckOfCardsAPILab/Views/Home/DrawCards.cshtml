@@ -1,0 +1,19 @@
+﻿@model Deck
+
+<h2>Cards remaining: @Model.remaining</h2>
+
+@foreach (Card card in Model.cards)
+{
+    <img src="@card.image" />
+    <p>@card.value of @card.suit</p>
+}
+
+
+<form asp-action="DrawCards" formaction="post">
+    <input type="text" name="deckId" value="@Model.deck_id" hidden />
+    <input type="submit" value="New hand" />
+</form>
+<form asp-action="ReshuffleDeck" formaction="post">
+<input type="text" name="deckId" value="@Model.deck_id" hidden />
+<input type="submit" value="Reshuffle Deck" />
+</form>
